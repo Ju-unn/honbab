@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private CardView bottomDetailSheet;
     private TextView sheetTitle;
     private ImageView btnCloseDetail;
-    private RecyclerView rvDetailMeetings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

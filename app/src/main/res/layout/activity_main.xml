@@ -13,12 +13,6 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="32dp">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
 <!--        앱로고 -->
         <ImageView
             android:id="@+id/iv_app_logo"
@@ -26,7 +20,7 @@
             android:layout_height="80dp"
             android:src="@drawable/app_logo2"
             android:scaleType="centerCrop"
-
+            android:layout_marginTop="55dp"
             android:layout_marginBottom="18dp"
             android:elevation="3dp"/>
 
@@ -147,6 +141,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp"
             android:orientation="horizontal"
             android:gravity="center"
             >
@@ -164,10 +159,10 @@
 
                 <ImageView
                     android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_height="33dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_kakao"
-                    android:contentDescription="카카오 로그인" />
+                    android:contentDescription="카카오 로그인"
+                    android:src="@drawable/ic_kakao" />
 
             </FrameLayout>
 
@@ -212,11 +207,6 @@
 
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
 
     </LinearLayout>

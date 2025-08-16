@@ -30,17 +30,6 @@
                 android:elevation="4dp"
                 android:src="@drawable/ic_notification" />
 
-            <ImageButton
-                android:id="@+id/btn_edit_profile_image"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@drawable/ic_notification"
-                android:background="@drawable/edit_button_background"
-                android:layout_gravity="bottom|end"
-                android:layout_marginBottom="4dp"
-                android:layout_marginEnd="4dp"
-                android:elevation="5dp" />
-
         </FrameLayout>
 
 <!--        닉네임-->
