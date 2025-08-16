@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_200">
+
+<!--    상단 헤더-->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="@color/bg_100"
+        android:elevation="2dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="←"
+            android:textSize="18sp"
+            android:textColor="@color/text_100"
+            android:background="@drawable/button_round_background"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="삼겹살 모임"
+            android:textColor="@color/primary_200"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:letterSpacing="-0.05"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+
+        <!-- 오른쪽 여백 -->
+        <View
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            />
+
+    </LinearLayout>
+
+<!--    스크롤-->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/join_button_container">
+
+<!--        스크롤 내용 구성-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+<!--            모임 이미지-->
+            <FrameLayout
+                android:id="@+id/image_container"
+                android:layout_width="0dp"
+                android:layout_height="220dp"
+                android:background="@color/bg_300"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_meeting_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_meeting_image" />
+
+                <TextView
+                    android:id="@+id/tv_image_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1/3"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/image_indicator_background"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_margin="12dp" />
+            </FrameLayout>
+
+<!--            가게 이름-->
+            <TextView
+                android:id="@+id/tv_store_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="강남 삽겹살집"
+                android:textColor="@color/text_100"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/image_container"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/rating_container"/>
+
+            <!-- 평점 -->
+            <LinearLayout
+                android:id="@+id/rating_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="@id/tv_store_name"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⭐"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_store_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.8"
+                    android:textColor="@color/text_100"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="2dp" />
+
+            </LinearLayout>
+
+<!--            가게 카테고리-->
+            <TextView
+                android:id="@+id/tv_store_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="한식 • 고기구이"
+                android:textColor="@color/text_200"
+                android:textSize="13sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_store_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+<!--            가게 주소-->
+            <TextView
+                android:id="@+id/tv_store_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="서울 강남구 강남대로 123길 231"
+                android:textColor="@color/text_200"
+                android:textSize="13sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_store_category"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+<!--            가격 정보-->
+            <TextView
+                android:id="@+id/tv_price_range"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="1인당 25,000원 ~ 35,000원"
+                android:textColor="@color/text_200"
+                android:textSize="13sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_store_address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 구분선 1 -->
+            <View
+                android:id="@+id/divider_1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/border_100"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_price_range"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+<!--            모임 정보 제목-->
+            <TextView
+                android:id="@+id/tv_meeting_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="모임 정보"
+                android:textColor="@color/primary_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/divider_1"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+<!--            날짜-->
+            <ImageView
+                android:id="@+id/iv_meeting_date"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_notification"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_meeting_info_title"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- 날짜 -->
+            <TextView
+                android:id="@+id/tv_meeting_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2025년 7월 15일 (화)"
+                android:textColor="@color/text_200"
+                android:textSize="12sp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_meeting_info_title"
+                app:layout_constraintStart_toEndOf="@id/iv_meeting_date"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center" />
+
+            <!-- 가이드라인 (중앙) -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.45" />
+
+            <!--            시간-->
+            <ImageView
+                android:id="@+id/iv_meeting_time"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_notification"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toTopOf="@id/tv_meeting_date"
+                app:layout_constraintStart_toEndOf="@id/guideline_center"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 시간 -->
+            <TextView
+                android:id="@+id/tv_meeting_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="오후 7:00"
+                android:textColor="@color/text_200"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_meeting_time"
+                app:layout_constraintStart_toEndOf="@id/iv_participant_count"
+                app:layout_constraintTop_toTopOf="@id/iv_meeting_date" />
+
+<!--            참여 인원-->
+
+            <ImageView
+                android:id="@+id/iv_participant_count"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_notification"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toTopOf="@id/tv_meeting_date"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <!-- 참여 인원 -->
+            <TextView
+                android:id="@+id/tv_participant_count"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="2/4명 참여중"
+                android:textColor="@color/text_200"
+                android:textSize="12sp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="@id/iv_meeting_date"
+                app:layout_constraintStart_toEndOf="@id/iv_meeting_time"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <!-- 구분선 2 -->
+            <View
+                android:id="@+id/divider_2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/border_100"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_participant_count"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 호스트 메시지 제목 -->
+            <TextView
+                android:id="@+id/tv_host_message_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="호스트 메시지"
+                android:textColor="@color/primary_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/divider_2"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- 호스트 메시지 내용 -->
+            <TextView
+                android:id="@+id/tv_host_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="회사 근처에서 맛있는 삼겹살 먹고 싶어요! 같이 드실 분들 환영합니다 😊 처음 오시는 분들도 편하게 참여해주세요!"
+                android:textColor="@color/text_200"
+                android:textSize="13sp"
+                android:lineSpacingExtra="2dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_host_message_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 구분선 3 -->
+            <View
+                android:id="@+id/divider_3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/border_100"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_host_message"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 위치 제목 -->
+            <TextView
+                android:id="@+id/tv_location_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="위치"
+                android:textColor="@color/primary_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/divider_3"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- 미니 지도 -->
+            <FrameLayout
+                android:id="@+id/mini_map"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:background="@drawable/mini_map_background"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_location_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:text="지도"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:elevation="2dp" />
+
+            </FrameLayout>
+
+            <!-- 구분선 4 -->
+            <View
+                android:id="@+id/divider_4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/border_100"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/mini_map"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 참여자 제목 -->
+            <TextView
+                android:id="@+id/tv_participants_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="참여자 (2/4)"
+                android:textColor="@color/primary_100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/divider_4"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- 호스트 정보 -->
+            <ImageView
+                android:id="@+id/host_avatar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:background="@drawable/edit_profile_avatar_background"
+                android:src="@drawable/ic_kakao"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_participants_title"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/host_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="카더가든"
+                android:textColor="@color/text_100"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="@id/host_avatar"
+                app:layout_constraintStart_toEndOf="@id/host_avatar"/>
+
+            <TextView
+                android:id="@+id/host_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="호스트"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:background="@drawable/host_badge_background"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="2dp"
+                android:layout_marginStart="6dp"
+                app:layout_constraintTop_toTopOf="@id/host_name"
+                app:layout_constraintBottom_toBottomOf="@id/host_name"
+                app:layout_constraintStart_toEndOf="@id/host_name" />
+
+            <TextView
+                android:id="@+id/host_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="맛집 탐방 좋아해요"
+                android:textColor="@color/text_200"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/host_name"
+                app:layout_constraintStart_toStartOf="@id/host_name"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 일반 참여자 -->
+            <ImageView
+                android:id="@+id/participant_avatar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:gravity="center"
+                android:background="@drawable/edit_profile_avatar_background"
+                android:src="@drawable/ic_kakao"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/host_avatar"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/participant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="한로로"
+                android:textColor="@color/text_100"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="@id/participant_avatar"
+                app:layout_constraintStart_toEndOf="@id/participant_avatar" />
+
+            <TextView
+                android:id="@+id/participant_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="맛있는 고기 기대됩니다!"
+                android:textColor="@color/text_200"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/participant_name"
+                app:layout_constraintStart_toStartOf="@id/participant_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <!-- 하단 고정 버튼 -->
+    <LinearLayout
+        android:id="@+id/join_button_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_100"
+        android:padding="18dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_join_meeting"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="참여 신청하기"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@drawable/button_primary_background"
+            android:elevation="2dp" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

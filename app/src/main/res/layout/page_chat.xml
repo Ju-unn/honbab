@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_200">
+
+<!--    상단 헤더-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bg_100">
+
+        <!-- 상단 헤더 -->
+        <LinearLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:background="@color/bg_100">
+
+            <!-- 뒤로가기 버튼 -->
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:text="←"
+                android:textSize="18sp"
+                android:textColor="@color/text_100"
+                android:background="@color/bg_100"
+                android:layout_marginEnd="12dp" />
+
+            <!-- 제목 -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="채팅"
+                android:textColor="@color/primary_200"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:letterSpacing="-0.05" />
+
+            <!-- 오른쪽 여백 -->
+            <View
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="12dp"
+                />
+
+        </LinearLayout>
+
+        <!--    검색 바-->
+        <LinearLayout
+            android:id="@+id/search_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/search_bar_background"
+            android:layout_marginHorizontal="16dp"
+            android:paddingHorizontal="16dp">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_search"
+                android:layout_marginEnd="8dp" />
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColorHint="@color/text_200"
+                android:textSize="14sp"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+<!--    탭 메누-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/bg_100"
+        android:elevation="1dp">
+
+<!--        잔체 탭-->
+        <TextView
+            android:id="@+id/tab_all"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="전체"
+            android:textColor="@color/primary_100"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/tab_selected_background"
+            android:clickable="true"
+            android:focusable="true"/>
+
+<!--        1대1 채팅-->
+        <TextView
+            android:id="@+id/tab_personal"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="1:1"
+            android:textColor="@color/text_200"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/tab_background"
+            android:clickable="true"
+            android:focusable="true"/>
+
+<!--        모임-->
+        <TextView
+            android:id="@+id/tab_group"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="모임"
+            android:textColor="@color/text_200"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/tab_background"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+<!--    채팅방 리스트-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/bg_100"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"/>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
